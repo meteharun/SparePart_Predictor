@@ -174,7 +174,7 @@ def getReport(encode_dict):
 
 df, my_dict = initiateDF('UC01_TV_raw_mini_dataset.xlsx')
 df,encode_dict = processDF(df)
-df = deleteRows(df)
+df = deleteRows(df_2)
 
 model = getModel(df)
 
