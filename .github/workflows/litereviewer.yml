@@ -29,9 +29,4 @@ jobs:
       - name: Run LiteReviewer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python -m lite_reviewer.runner \
-            "${{ github.repository }}" \
-            "${{ github.event.pull_request.number }}" \
-            --model phi \
-            --shot zero
+        run: python -m lite_reviewer.runner "${{ github.repository }}" "${{ github.event.pull_request.number }}" --model phi --shot zero
