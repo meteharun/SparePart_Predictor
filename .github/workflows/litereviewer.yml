@@ -13,13 +13,11 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+      - name: Show Python version
+        run: python --version
 
       - name: Install LiteReviewer
         run: |
@@ -28,5 +26,6 @@ jobs:
 
       - name: Run LiteReviewer
         env:
-            GITHUB_TOKEN: ${{ secrets.LITE_REVIEWER_TOKEN }}
-        run: python -m lite_reviewer.runner "${{ github.repository }}" "${{ github.event.pull_request.number }}" --model phi --shot zero
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -m lite_reviewer.runner "${{ github.repository }}" "${{ github.event.pull_request.number }}" --model phi --shot zero
