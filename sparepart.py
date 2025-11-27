@@ -6,8 +6,8 @@ import random
 import math
 from sklearn import preprocessing
 from collections import Counter
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ens import RandomForestClassifier
+from sklearn.enimport GradientBoostingClassifier
 from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
