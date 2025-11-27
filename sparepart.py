@@ -46,7 +46,7 @@ def fill_empty_rows(group_df,col,weights,values):
       random_fill = random.choices(values, weights=weights, k=group_df[col].isnull().sum())
       group_df.loc[group_df[col].isnull(), col] = random_fill
 
-  return group_df
+  return None
 
 def filterDF(target):
   myd = df[df["MATL_GROUP"] == target]
