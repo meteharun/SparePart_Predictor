@@ -23,7 +23,7 @@ def initiateDF(fname):
   return df, my_dictionary
 
 def extractTrivialColumns(df):
-  for col in df.columns:
+  for col in df.columns:asdsaasd
     if df[col].nunique() == 1:
       df.drop(col, axis=1, inplace=True)
       #print("Column dropped:", col, " (constant value)")
