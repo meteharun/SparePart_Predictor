@@ -20,7 +20,7 @@ def initiateDF(fname):
   dict_df = pd.read_excel(fname, sheet_name=1)
   my_dictionary = dict_df.set_index('MATL_GROUP')['Açıklama'].to_dict()
 
-  return df, my_dictionary
+  return df2, my_dictionary
 
 def extractTrivialColumns(df):
   for col in df.columns:
