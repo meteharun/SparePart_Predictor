@@ -6,10 +6,10 @@ import random
 import math
 from sklearn import preprocessing
 from collections import Counter
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import Random
+from sklearn.ensemble import GradienClassifier
 from xgboost import XGBClassifier
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_tplit
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.metrics import f1_score
