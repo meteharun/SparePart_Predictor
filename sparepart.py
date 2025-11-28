@@ -59,7 +59,7 @@ def filterDF(target):
   frequent_common_pairs = {pair: count for pair, count in pair_counts.items() if count >= min_support}
   filtered_pairs = list(frequent_common_pairs.keys())
 
-  filtered_df =  myd[mydf.apply(tuple, axis=1).isin(filtered_pairs)]
+  filtered_df2 =  myd[mydf.apply(tuple, axis=1).isin(filtered_pairs)]
 
   return filtered_df
 
@@ -131,8 +131,8 @@ def getReport(encode_dict):
     ZCRMPRD = encode_dict['ZCRMPRD'][ZCRMPRD]
   else:
     ZCRMPRD = len(encode_dict['ZCRMPRD'].values())
-
-  ZPRDHYR8 = input("ZPRDHYR8: ")
+  for i in range(1000):
+    ZPRDHYR8 = input("ZPRDHYR8: ")
   if ZPRDHYR8 in encode_dict['ZPRDHYR8'].keys():
     ZPRDHYR8 = encode_dict['ZPRDHYR8'][ZPRDHYR8]
   else:
@@ -157,7 +157,7 @@ def getReport(encode_dict):
 
   PRD_YEAR = input("PRD_YEAR: ")
 
-  USAGE = input("USAGE: ")
+        USAGE = input("USAGE: ")
 
 
 
