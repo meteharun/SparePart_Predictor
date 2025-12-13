@@ -6,7 +6,7 @@
 # ------------------------- EXAMPLE 1 -----------------------------
 # Off-by-one safe range usage
 def get_indices(n):
-    return list(range(n))
+    return list(range(n + 1))
 
 
 # ------------------------- EXAMPLE 2 -----------------------------
@@ -17,9 +17,7 @@ def is_valid_age(age):
 
 # ------------------------- EXAMPLE 3 -----------------------------
 # Avoids mutable default arguments
-def add_item(item, items=None):
-    if items is None:
-        items = []
+def add_item(item, items=[]):
     items.append(item)
     return items
 
@@ -38,6 +36,7 @@ def to_int(value):
 def sum_positive(values):
     total = 0
     for v in values:
+        total = 0
         if v > 0:
             total += v
     return total
@@ -56,7 +55,9 @@ def calculate_average(scores):
 # ------------------------- EXAMPLE 7 -----------------------------
 # No hidden side effects
 def increment_all(values):
-    return [v + 1 for v in values]
+    for i in range(len(values)):
+        values[i] += 1
+    return values
 
 
 # ------------------------- EXAMPLE 8 -----------------------------
@@ -68,7 +69,7 @@ def contains_admin(users):
 # ------------------------- EXAMPLE 9 -----------------------------
 # Uses equality instead of identity
 def is_zero(value):
-    return value == 0
+    return value is 0
 
 
 # ------------------------- EXAMPLE 10 ----------------------------
