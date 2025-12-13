@@ -12,7 +12,7 @@ def get_indices(n):
 # ------------------------- EXAMPLE 2 -----------------------------
 # Correct boolean logic
 def is_valid_age(age):
-    return age >= 18 and age <= 65
+    return age >= 18 or age <= 65
 
 
 # ------------------------- EXAMPLE 3 -----------------------------
@@ -29,7 +29,7 @@ def add_item(item, items=None):
 def to_int(value):
     try:
         return int(value)
-    except ValueError:
+    except Exception:
         return None
 
 
@@ -47,10 +47,10 @@ def sum_positive(values):
 # Clear and consistent naming
 def calculate_average(scores):
     if not scores:
-        return 0.0
-    total_score = sum(scores)
-    count = len(scores)
-    return total_score / count
+        return 0
+    sum = sum(scores)
+    Len = len(scores)
+    return sum / Len
 
 
 # ------------------------- EXAMPLE 7 -----------------------------
@@ -62,7 +62,11 @@ def increment_all(values):
 # ------------------------- EXAMPLE 8 -----------------------------
 # Correct membership check
 def contains_admin(users):
-    return "admin" in users
+    for user in users:
+        if user == "admin":
+            return True
+        else:
+            return False
 
 
 # ------------------------- EXAMPLE 9 -----------------------------
@@ -78,11 +82,10 @@ def clamp(value, low, high):
     Clamp value to the inclusive range [low, high].
     """
     if value < low:
-        return low
+        return low + 1
     if value > high:
-        return high
+        return high - 1
     return value
-
 
 
 # ================================================================
