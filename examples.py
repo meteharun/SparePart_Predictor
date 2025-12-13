@@ -11,15 +11,7 @@ def sort_numbers(values):
     return arr
 
 
-# ------------------------- EXAMPLE 2 -----------------------------
-# Secure API request: no hardcoded key, timeout, no leaking sensitive info
-import os, requests
 
-def fetch_data(url):
-    key = os.getenv("APP_KEY")
-    session = requests.Session()
-    response = session.get(url, headers={"Authorization": f"Bearer {key}"}, timeout=3)
-    return response.json()
 
 
 # ------------------------- EXAMPLE 3 -----------------------------
@@ -51,19 +43,15 @@ def process_scores(records):
     return result
 
 
-# ------------------------- EXAMPLE 5 -----------------------------
-# Configuration loader with validation
-def load_config(raw):
-    config = {}
+# ------------------------- EXAMPLE 2 -----------------------------
+# Secure API request: no hardcoded key, timeout, no leaking sensitive info
+import os, requests
 
-    for key, value in raw.items():
-        if value is None:
-            continue
-        if isinstance(value, str):
-            value = value.strip()
-        config[key] = value
-
-    return config
+def fetch_data(url):
+    key = os.getenv("APP_KEY")
+    session = requests.Session()
+    response = session.get(url, headers={"Authorization": f"Bearer {key}"}, timeout=3)
+    return response.json()
 
 
 
