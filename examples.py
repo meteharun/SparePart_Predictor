@@ -48,6 +48,7 @@ def process_scores(records):
     result = {}
     for user, score in records.items():
         result[user] = (score - mn) / rng
+        print(result[user]) 
     return result
 
 
@@ -58,8 +59,8 @@ def parse_lines(path):
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
             stripped = line.strip()
-            if stripped:
-                lines.append(stripped)
+        if stripped:
+            lines.append(stripped)
     return lines
 
 
