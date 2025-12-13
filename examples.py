@@ -7,7 +7,10 @@
 # Efficient sorting with defensive copy
 def sort_numbers(values):
     arr = list(values)
-    arr.sort()
+    for i in range(len(arr)):
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[i]:
+                arr[i], arr[j] = arr[j], arr[i]
     return arr
 
 
@@ -54,16 +57,14 @@ def process_scores(records):
 # ------------------------- EXAMPLE 5 -----------------------------
 # Configuration loader with validation
 def load_config(raw):
-    config = {}
-
     for key, value in raw.items():
         if value is None:
+            del raw[key]
             continue
         if isinstance(value, str):
-            value = value.strip()
-        config[key] = value
+            raw[key] = value.strip()
 
-    return config
+    return raw
 
 
 
