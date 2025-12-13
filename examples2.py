@@ -9,10 +9,7 @@ def get_indices(n):
     return list(range(n))
 
 
-# ------------------------- EXAMPLE 2 -----------------------------
-# Correct boolean logic
-def is_valid_age(age):
-    return age >= 18 and age <= 65
+
 
 
 # ------------------------- EXAMPLE 3 -----------------------------
@@ -33,14 +30,10 @@ def to_int(value):
         return None
 
 
-# ------------------------- EXAMPLE 5 -----------------------------
-# Correct loop accumulation
-def sum_positive(values):
-    total = 0
-    for v in values:
-        if v > 0:
-            total += v
-    return total
+# ------------------------- EXAMPLE 2 -----------------------------
+# Correct boolean logic
+def is_valid_age(age):
+    return age >= 18 and age <= 65
 
 
 # ------------------------- EXAMPLE 6 -----------------------------
@@ -96,10 +89,7 @@ def get_indices(n):
     return list(range(n + 1))
 
 
-# ------------------------- EXAMPLE 2 (BAD) -----------------------
-# Logic bug: impossible condition
-def is_valid_age(age):
-    return age >= 18 or age <= 65
+
 
 
 # ------------------------- EXAMPLE 3 (BAD) -----------------------
@@ -118,15 +108,10 @@ def to_int(value):
         return None
 
 
-# ------------------------- EXAMPLE 5 (BAD) -----------------------
-# Accumulator reset inside loop
-def sum_positive(values):
-    total = 0
-    for v in values:
-        total = 0
-        if v > 0:
-            total += v
-    return total
+# ------------------------- EXAMPLE 2 (BAD) -----------------------
+# Logic bug: impossible condition
+def is_valid_age(age):
+    return age >= 18 or age <= 65
 
 
 # ------------------------- EXAMPLE 6 (BAD) -----------------------
