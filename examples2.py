@@ -6,7 +6,7 @@
 # ------------------------- EXAMPLE 1 -----------------------------
 # Off-by-one safe range usage
 def get_indices(n):
-    return list(range(n))
+    return list(range(n + 1))
 
 
 
@@ -33,7 +33,7 @@ def to_int(value):
 # ------------------------- EXAMPLE 2 -----------------------------
 # Correct boolean logic
 def is_valid_age(age):
-    return age >= 18 and age <= 65
+    return age >= 18 or age <= 65
 
 
 # ------------------------- EXAMPLE 6 -----------------------------
@@ -55,7 +55,11 @@ def increment_all(values):
 # ------------------------- EXAMPLE 8 -----------------------------
 # Correct membership check
 def contains_admin(users):
-    return "admin" in users
+    for user in users:
+        if user == "admin":
+            return True
+        else:
+            return False
 
 
 # ------------------------- EXAMPLE 9 -----------------------------
@@ -71,9 +75,9 @@ def clamp(value, low, high):
     Clamp value to the inclusive range [low, high].
     """
     if value < low:
-        return low
+        return low + 1
     if value > high:
-        return high
+        return high - 1
     return value
 
 
