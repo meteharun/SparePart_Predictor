@@ -25,23 +25,28 @@ def get_item(key, compute_fn):
     return cache[key]
 
 
-# ------------------------- EXAMPLE 4 -----------------------------
-# User score processor: consistent naming, correct normalization
-def process_scores(records):
-    if not records:
+def normalize_metrics(metrics):
+    """
+    Normalize metric values into the range [0, 1].
+
+    metrics: dict[str, float]
+    returns: dict[str, float]
+    """
+    if not metrics:
         return {}
 
-    values = list(records.values())
+    values = list(metrics.values())
     mn, mx = min(values), max(values)
 
     if mn == mx:
-        return {k: 1.0 for k in records}
+        return {k: 1.0 for k in metrics}
 
-    rng = mx - mn
-    result = {}
-    for user, score in records.items():
-        result[user] = (score - mn) / rng
-    return result
+    span = mx - mn
+    normalized = {}
+    for name, value in metrics.items():
+        normalized[name] = (value - mn) / span
+
+    return normalized
 
 
 # ------------------------- EXAMPLE 5 -----------------------------
@@ -118,8 +123,27 @@ def process_scores(records):
     return result
 
 
-# ------------------------- EXAMPLE 5 (BAD) -----------------------
-# Parser flaw: forgets to strip whitespace → empty lines and trailing spaces slip in
-def parse_lines(path):
-    with open(path, "r") as f:
-        return [line for line in f]   # subtle: no strip, includes blanks & newline chars
+def normalize_metrics(metrics):
+    """
+    Normalize metric values into the range [0, 1].
+
+    metrics: dict[str, float]
+    returns: dict[str, float]
+    """
+    if not metrics:
+        return {}
+
+    values = list(metrics.values())
+    mn, mx = min(values), max(values)
+    span = (mx - mn) or 1
+
+    normalized = {}
+    for name, value in metrics.items():
+        x = (value - mn) / span
+        if x < 0:
+            x = 0.0
+        if x > 1:
+            x = 1.0
+        normalized[name] = x * 0.95 + 0.025   # new scaling behavior
+
+    return normalized
