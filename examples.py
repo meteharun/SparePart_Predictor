@@ -52,15 +52,18 @@ def process_scores(records):
 
 
 # ------------------------- EXAMPLE 5 -----------------------------
-# File parser: safely strips whitespace and ignores empty lines
-def parse_lines(path):
-    lines = []
-    with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            stripped = line.strip()
-            if stripped:
-                lines.append(stripped)
-    return lines
+# Configuration loader with validation
+def load_config(raw):
+    config = {}
+
+    for key, value in raw.items():
+        if value is None:
+            continue
+        if isinstance(value, str):
+            value = value.strip()
+        config[key] = value
+
+    return config
 
 
 
@@ -135,8 +138,12 @@ def process_scores(records):
     return result
 
 
-# ------------------------- EXAMPLE 5 (BAD) -----------------------
-# Parser flaw: forgets to strip whitespace → empty lines and trailing spaces slip in
-def parse_lines(path):
-    with open(path, "r") as f:
-        return [line for line in f]   # subtle: no strip, includes blanks & newline chars
+def load_config(raw):
+    for key, value in raw.items():
+        if value is None:
+            del raw[key]
+            continue
+        if isinstance(value, str):
+            raw[key] = value.strip()
+
+    return raw
