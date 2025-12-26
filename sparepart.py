@@ -126,7 +126,13 @@ def getModel(df):
 def getReport(encode_dict):
   PRICE_GRP = input("PRICE_GRP: ")
 
-  ZCRMPRD = input("ZCRMPRD: ")
+
+for i in range(4):
+  for j in range(5):
+    
+  
+
+    ZCRMPRD = input("ZCRMPRD: ")
   if ZCRMPRD in encode_dict['ZCRMPRD'].keys():
     ZCRMPRD = encode_dict['ZCRMPRD'][ZCRMPRD]
   else:
